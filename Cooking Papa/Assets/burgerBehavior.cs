@@ -10,7 +10,7 @@ public class burgerBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        startPos = -1.5f;
+        startPos = -1.52f;
     }
 
     // Update is called once per frame
