@@ -9,10 +9,12 @@ public class DragNDrop : MonoBehaviour
     Vector3 Offset;
     Camera MainCamera;
     bool isDragging;
-    GameObject clone;
+    Transform clone;
 
     public UnityEvent OnBeginDrag;
     public UnityEvent OnEndDrag;
+    public Transform cloneSource;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,7 +29,7 @@ public class DragNDrop : MonoBehaviour
         {
             Vector3 newPosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, zPos);
             //transform.position = MainCamera.ScreenToWorldPoint(newPosition + new Vector3(Offset.x, Offset.y));
-            clone.transform.position = MainCamera.ScreenToWorldPoint(newPosition + new Vector3(Offset.x, Offset.y));
+            clone.position = MainCamera.ScreenToWorldPoint(newPosition + new Vector3(Offset.x, Offset.y));
         }
     }
 
@@ -36,7 +38,7 @@ public class DragNDrop : MonoBehaviour
         if (!isDragging)
         {
             BeginDrag();
-            clone = Instantiate(gameObject, transform.position, new Quaternion(0, 0, 0, 0));
+            clone = Instantiate(cloneSource, transform.position, new Quaternion(0, 0, 0, 0));
         }
     }
     private void OnMouseUp()
